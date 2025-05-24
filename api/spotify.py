@@ -142,6 +142,14 @@ def loadImageB64(url):
 
 
 def makeSVG(data, background_color, border_color):
+    # Asegurarnos de que el color de fondo sea válido
+    if background_color == "transparent":
+        background_color = "transparent"
+    else:
+        # Si no es transparente, asegurarnos de que tenga el formato correcto
+        if not background_color.startswith('#'):
+            background_color = f"#{background_color}"
+    
     barCount = 84
     contentBar = "".join(["<div class='bar'></div>" for _ in range(barCount)])
     barCSS = barGen(barCount)
@@ -227,6 +235,7 @@ def makeSVG(data, background_color, border_color):
 @app.route('/with_parameters')
 def catch_all(path):
     background_color = request.args.get('background_color') or "transparent"
+    print(f"Color de fondo recibido: {background_color}")  # Agregar este log
     border_color = request.args.get('border_color') or "000000"
 
     try:
