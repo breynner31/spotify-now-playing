@@ -1,5 +1,5 @@
 &nbsp;<div align="center">
-[![Spotify](https://spotify-now-playing-one-green.vercel.app/api/spotify?background_color=FFFFFF&border_color=000000)](https://open.spotify.com/user/breinnersierra879)
+[![Spotify](https://spotify-now-playing-one-green.vercel.app/api/spotify?background_color=FFFFFF)](https://open.spotify.com/user/breinnersierra879)
 </div>
 
 &nbsp;<div align="center">
