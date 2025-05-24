@@ -216,17 +216,9 @@ def makeSVG(data, background_color, border_color):
 
     svg = render_template(getTemplate(), **dataDict)
 
-    # Modificar el color del texto a blanco en el SVG
-    svg = f"""
-    <svg width="540" height="170" xmlns="http://www.w3.org/2000/svg">
-        <style>
-            .text {{ fill: white; font-family: Arial, sans-serif; }}
-            {barCSS}
-        </style>
-        <!-- ... resto del SVG ... -->
-    </svg>
-    """
-
+    # Asegurarnos de que el SVG tenga el estilo correcto
+    svg = svg.replace('<svg', '<svg style="color: white;"')
+    
     return svg
 
 

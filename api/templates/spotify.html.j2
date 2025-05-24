@@ -45,30 +45,19 @@
 
                 .song {
                     width: 330px;
-                    color: #666;
+                    color: #ffffff;
                     overflow: hidden;
                     margin-top: 3px;
                     font-size: 24px;
                     text-align: center;
                     white-space: nowrap;
                     text-overflow: ellipsis;
-                    background: linear-gradient(
-                                    125deg, 
-                                    rgb({{ songPalette[0][0] }}, {{ songPalette[0][1] }}, {{ songPalette[0][2] }}),
-                                    rgb({{ songPalette[1][0] }}, {{ songPalette[1][1] }}, {{ songPalette[1][2] }})
-                                );
-                    background-size: 200% 100%;
-                    background-position: 0% 50%;
-                    -webkit-text-fill-color: transparent;
-                    -webkit-background-clip: text;
-                    -webkit-box-decoration-break: clone;
-                    box-decoration-break: clone;
-                    animation: gradient 15s ease infinite;
+                    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
                 }
 
                 .artist {
                     width: 330px;
-                    color: #b3b3b3;
+                    color: #ffffff;
                     font-size: 20px;
                     margin-top: 4px;
                     text-align: center;
@@ -76,18 +65,7 @@
                     overflow: hidden;
                     white-space: nowrap;
                     text-overflow: ellipsis;
-                    background: linear-gradient(
-                                    -125deg, 
-                                    rgb({{ songPalette[0][0] }}, {{ songPalette[0][1] }}, {{ songPalette[0][2] }}),
-                                    rgb({{ songPalette[1][0] }}, {{ songPalette[1][1] }}, {{ songPalette[1][2] }})
-                                );                    
-                    background-size: 200% 100%;
-                    background-position: 0% 50%;
-                    -webkit-text-fill-color: transparent;
-                    -webkit-background-clip: text;
-                    -webkit-box-decoration-break: clone;
-                    box-decoration-break: clone;
-                    animation: gradient 12s ease infinite;
+                    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
                 }
 
                 .cover {
@@ -122,6 +100,7 @@
                     background-position: 0% 50%;
                     background-attachment: fixed;
                     animation: gradient 15s ease infinite, pulse 0ms -800ms ease-in infinite alternate;
+                    box-shadow: 0 0 3px rgba(255, 255, 255, 0.3);
                 }
                 
                 .spotify-logo {
