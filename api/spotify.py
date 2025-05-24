@@ -142,6 +142,10 @@ def loadImageB64(url):
 
 
 def makeSVG(data, background_color, border_color):
+    # Forzar color de fondo válido
+    if not background_color or background_color.lower() == 'transparent':
+        background_color = "0D1117"
+    
     # Asegurarnos de que el color de fondo tenga el formato correcto
     if not background_color.startswith('#'):
         background_color = f"#{background_color}"
@@ -230,8 +234,11 @@ def makeSVG(data, background_color, border_color):
 @app.route("/<path:path>")
 @app.route('/with_parameters')
 def catch_all(path):
-    background_color = request.args.get('background_color') or "0D1117"
-    print(f"Color de fondo recibido: {background_color}")  # Agregar este log
+    # Forzar un color de fondo por defecto si es transparente o inválido
+    background_color = request.args.get('background_color')
+    if not background_color or background_color.lower() == 'transparent':
+        background_color = "0D1117"  # Color oscuro por defecto de GitHub
+    
     border_color = request.args.get('border_color') or "000000"
 
     try:
