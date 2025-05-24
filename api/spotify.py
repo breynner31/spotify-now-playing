@@ -235,7 +235,7 @@ def makeSVG(data, background_color, border_color):
 @app.route('/with_parameters')
 def catch_all(path):
     background_color = request.args.get('background_color') or "transparent"
-    print(f"Color de fondo recibido: {background_color}")  # Agregar este log
+    print(f"Color de fondo recibido: {background_color}")
     border_color = request.args.get('border_color') or "000000"
 
     try:
@@ -246,7 +246,9 @@ def catch_all(path):
     svg = makeSVG(data, background_color, border_color)
 
     resp = Response(svg, mimetype="image/svg+xml")
-    resp.headers["Cache-Control"] = "s-maxage=1"
+    resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
 
     return resp
 
