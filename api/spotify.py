@@ -3,8 +3,8 @@ import os
 import json
 import random
 import requests
+import colorgram
 
-from colorthief import ColorThief
 from base64 import b64encode
 from dotenv import load_dotenv, find_dotenv
 from flask import Flask, Response, render_template, request
@@ -108,8 +108,19 @@ def gradientGen(albumArtURL, color_count):
             print(f"Error al descargar la imagen: {response.status_code}")
             return [(0, 0, 0)] * color_count  # Retornar colores negros por defecto
         
-        colortheif = ColorThief(BytesIO(response.content))
-        palette = colortheif.get_palette(color_count)
+        # Guardar la imagen temporalmente
+        with open('temp_image.jpg', 'wb') as f:
+            f.write(response.content)
+        
+        # Extraer colores usando colorgram
+        colors = colorgram.extract('temp_image.jpg', color_count)
+        
+        # Convertir los colores al formato RGB
+        palette = [(color.rgb.r, color.rgb.g, color.rgb.b) for color in colors]
+        
+        # Eliminar el archivo temporal
+        os.remove('temp_image.jpg')
+        
         return palette
     except Exception as e:
         print(f"Error al procesar la imagen: {str(e)}")
